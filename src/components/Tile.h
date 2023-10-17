@@ -1,19 +1,15 @@
-#include <iostream>
-#include <string>
-
-using namespace std;
-
-class Tuile{
+class Tile{
     private:
 
     public:
-        string state;
+        bool state;
         string top;
         string left;
         string right;
         string bottom;
 
-        Tuile(string white){
+        Tile(string white){
+            state = 0;
             top = white;
             left = white;
             right = white;

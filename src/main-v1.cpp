@@ -1,36 +1,52 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#include <algorithm>
+#include <sstream>
 
-#include "components/Plateau.h"
-#include "components/Tuile.h"
+
 
 using namespace std;
 
+//---------------------- GLOBAL VARIABLES -----------------------//
+int BOARD_ROWS = 0;
+int BOARD_COLS = 0;
+int TILE_COUNT = 24;
+
+#include "components/Tile.h"
+#include "components/lecture.cpp"
 
 int main(){
 
-    Plateau P;
-    int col = 4;
-    int row = 6;
-    // plateau de taile 4*6 -> 4 vectors de 6 tuiles
+    vector <vector<Tile>> Res;
+    
+
+    // data 1st line => board size
+    // data Xth line => 1 tile => data order => left/top/right/bottom
+
+    vector<Tile> Board44 = lecture("../assets/data44.txt");
+    //vector<Tile> Board55 = lecture("../assets/data55.txt");
+    //vector<Tile> Board66 = lecture("../assets/data66.txt");
 
 
-    for(int i = 0; i<row; i++){
-        vector <Tuile> row;
-        for(int j = 0; j<col; j++){
-            Tuile T = Tuile("W");
-            row.push_back(T);
+
+    // DISPLAY
+    cout << "#================= Board data =================#" << endl;
+    cout << "Dimensions : " << BOARD_COLS << "x" << BOARD_ROWS << endl;
+    
+    for(int i = 0 ; i < BOARD_COLS; i++){
+        for(int j = 0 ; j < BOARD_ROWS; j++){
+            cout << Board44[i+j].left << Board44[i+j].top << Board44[i+j].right << Board44[i+j].bottom << " ";
         }
-        P.plateau.push_back(row);
+        cout << endl;
     }
-
-    // we display the Plateau
-    for(vector <Tuile> r : P.plateau){
-        for(int i = 0; i<col; i++){
-            cout << i << " : " << r[i].state << endl;
-        }
-    }
+    cout << "#==============================================#" << endl;
+    cout << "#=============== Board solution ===============#" << endl;
+    cout << "#==============================================#" << endl;
 
     return 0;
 }
