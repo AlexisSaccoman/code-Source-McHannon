@@ -15,14 +15,14 @@ bool is_valid_2(int i, int j, Tile t, string borderColor){
         }
         switch(j){
             case 0: // 1st column
-                // 1st line
+                // [0;0]
                 if(i == 0){
                     if(t.top != borderColor || t.left != Res[i][j-1].right){
                         return false;
                     }
-                // other lines
+                // [x;0]
                 }else if(i > 0){
-                    if(t.top != Res[i-1][j].bottom || t.left != Res[i][j-1].right){
+                    if(t.top != Res[i-1][j].bottom || t.left != borderColor){
                         return false;
                     }
                 }
