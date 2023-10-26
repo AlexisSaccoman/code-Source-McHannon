@@ -15,9 +15,9 @@ using namespace std;
 #include "components/Tile.h"
 
 //---------------------- GLOBAL VARIABLES -----------------------//
-int BOARD_ROWS = 0;
-int BOARD_COLS = 0;
-int TILE_COUNT = BOARD_ROWS*BOARD_COLS;
+const int BOARD_ROWS = 0;
+const int BOARD_COLS = 0;
+const int TILE_COUNT = BOARD_ROWS*BOARD_COLS;
 
 vector <Tile> BoardRes;
 vector <vector<double>> execTimes;
