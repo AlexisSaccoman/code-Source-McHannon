@@ -8,6 +8,15 @@ class Tile{
         string right;
         string bottom;
 
+        Tile(){
+            state = 0;
+            top = "W";
+            left = "W";
+            right = "W";
+            bottom = "W";
+        
+        }
+
         Tile(string white){
             state = 0;
             top = white;

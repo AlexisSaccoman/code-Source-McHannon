@@ -1,11 +1,6 @@
 
 void display_board(vector<Tile> Board){
 
-    int nbr_tuiles = BOARD_COLS * BOARD_ROWS;
-    int lines = nbr_tuiles*3;
-    int cols = nbr_tuiles*3;
-
-
     for(int i = 0 ; i < BOARD_ROWS; i++){
         // topline
         cout << " ";
@@ -28,5 +23,13 @@ void display_board(vector<Tile> Board){
         }
         cout << endl;
     }
+}
 
+
+void fill_BoardRes_with_Res(){
+    for(vector<Tile> v : Res){
+        for(Tile t : v){
+            BoardRes.push_back(t);
+        }
+    }
 }
