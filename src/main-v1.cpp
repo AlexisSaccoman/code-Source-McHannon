@@ -7,7 +7,7 @@
 #include <time.h>
 #include <algorithm>
 #include <sstream>
-
+#include <thread>
 
 using namespace std;
 
@@ -15,8 +15,8 @@ using namespace std;
 #include "components/Tile.h"
 
 //---------------------- GLOBAL VARIABLES -----------------------//
-const int BOARD_ROWS = 0;
-const int BOARD_COLS = 0;
+int BOARD_ROWS = 0;
+int BOARD_COLS = 0;
 const int TILE_COUNT = BOARD_ROWS*BOARD_COLS;
 
 vector <Tile> BoardRes;
@@ -28,12 +28,16 @@ vector <string> fileNames = {"../assets/data44.txt"};
 // METHODS
 #include "components/lecture.cpp"
 #include "components/display_board.cpp"
-#include "components/is_valid.cpp"
-#include "components/is_valid_2.cpp"
+//#include "components/is_valid.cpp"
+//#include "components/is_valid_2.cpp"
+#include "components/is_valid_3.cpp"
+
 #include "components/solve_sequential.cpp"
 #include "components/solve_threadPool.cpp"
 #include "components/solve_otherMethod.cpp"
 
+
+// MAIN --> READ FILE & SOLVE --> DISPLAY
 int main(){
     
     // data 1st line => board size
@@ -59,9 +63,6 @@ int main(){
         solve_sequential(BoardInit);
         // solve_threadPool(BoardInit);
         // solve_otherMethod(BoardInit);
-        fill_BoardRes_with_Res();
-        display_board(BoardRes);
-        //display_board(BoardInit);
         cout << "#==============================================#" << endl;
     }
 

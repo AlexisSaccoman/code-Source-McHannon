@@ -27,9 +27,9 @@ void display_board(vector<Tile> Board){
 
 
 void fill_BoardRes_with_Res(){
-    for(vector<Tile> v : Res){
-        for(Tile t : v){
-            BoardRes.push_back(t);
+    for(int i = 0 ; i < BOARD_COLS; i++){
+        for(int j = 0 ; j < BOARD_ROWS; j++){
+            BoardRes.push_back(Res[i][j]);
         }
     }
 }
