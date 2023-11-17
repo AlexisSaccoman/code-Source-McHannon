@@ -8,6 +8,14 @@
 #include <algorithm>
 #include <sstream>
 #include <thread>
+#include <queue>
+#include <functional>
+#include <mutex>
+#include <condition_variable>
+#include <cstddef>
+#include <future>
+#include <atomic>
+#include <stack>
 
 using namespace std;
 
@@ -22,19 +30,17 @@ const int TILE_COUNT = BOARD_ROWS*BOARD_COLS;
 vector <Tile> BoardRes;
 vector <vector<double>> execTimes;
 vector<vector<Tile>> Res(BOARD_ROWS, vector<Tile>(BOARD_COLS));
-vector <string> fileNames = {"../assets/data44.txt"};
+vector <string> fileNames = {"../assets/data66.txt"};
 
 
 // METHODS
 #include "components/lecture.cpp"
 #include "components/display_board.cpp"
-//#include "components/is_valid.cpp"
-//#include "components/is_valid_2.cpp"
-#include "components/is_valid_3.cpp"
+#include "components/is_valid_4.cpp"
 
 #include "components/solve_sequential.cpp"
-#include "components/solve_threadPool.cpp"
-#include "components/solve_otherMethod.cpp"
+//#include "components/solve_threadPool.cpp"
+#include "components/solve_otherMethod_v2.cpp"
 
 
 // MAIN --> READ FILE & SOLVE --> DISPLAY
@@ -60,20 +66,22 @@ int main(){
         cout << "#==============================================#" << endl;
         cout << "#=============== Board solution ===============#" << endl;
         // SOLVE & DISPLAY
+        cout << "#========= Sequentiel - 1st Exec time =========#" << endl;
         solve_sequential(BoardInit);
-        // solve_threadPool(BoardInit);
-        // solve_otherMethod(BoardInit);
+        cout << "#==============================================#" << endl;
+        cout << "#======== threadPool - non fonctionnel ========#" << endl;
+        //solve_threadPool(BoardInit, 4);
+        cout << "#==============================================#" << endl;
+        cout << "#======== OtherMethod - 2nd Exec time =========#" << endl;
+        solve_otherMethod(BoardInit);
         cout << "#==============================================#" << endl;
     }
 
     // TIME DISPLAY
-    int a = 4;
+    int a = BOARD_COLS;
     cout << "#============== Execution Times ===============#" << endl;
     for(vector <double> t : execTimes){
-        cout << "Sequential backtracking : "<< a <<"x"<< a <<" => " << t[0] << "sec" << endl;
-        cout << "Thread pool backtracking : "<< a <<"x"<< a <<" => " << t[1] << "sec" << endl;
-        cout << "Other PM backtracking : "<< a <<"x"<< a <<" => " << t[2] << "sec" << endl;
-        a += 1;
+        cout << "Exec Time : "<< a <<"x"<< a <<" => " << t[0] << "sec" << endl;
     }
     cout << "#==============================================#" << endl;
     

@@ -24,4 +24,8 @@ class Tile{
             right = white;
             bottom = white;
         }
+
+        string toString(){
+            return left + top + right + bottom;
+        }
 };

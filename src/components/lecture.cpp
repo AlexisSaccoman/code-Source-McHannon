@@ -30,9 +30,6 @@ vector <Tile> lecture(string filename){
                 line.erase(i, 1);
             }
         }
-
-        // verification of the line content
-        //cout << "s : " << line << endl;
         
         // creation of a tile object
         Tile t("W");
